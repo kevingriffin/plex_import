@@ -17,3 +17,24 @@ installing the dependencies and placing a copy of your Plex database to
 operate on into the same directory as the script:
 
 `ruby -r "./plex_import.rb" -e "PlexImport.run"`
+
+To generate your own data from your database, you can use sqlite's csv
+flag:
+
+`sqlite3 -header -csv com.plexapp.plugins.library.db "select guid, title, title_sort from metadata_items where metadata_type = 2;" > out.csv`
+
+You can then turn this into the JSON file the script expects with the
+CSV converter:
+
+`ruby -r "./sqlite_csv_to_json.rb" -e "SqliteCsvToJson.run('./out.csv')"`
+
+Dependencies:
+
+csv
+json
+
+TODO:
+
+Lots of improvements to make it configurable: taking input from files on
+the command line, allowing custom defintions of which columns to export
+and import, etc.
