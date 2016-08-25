@@ -1,6 +1,6 @@
 require 'json'
 require 'json-schema'
-require "sqlite3"
+require 'sqlite3'
 
 FILE_SCHEMA = {
   "type" => "object",

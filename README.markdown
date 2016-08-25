@@ -12,13 +12,18 @@ on knowing the matching key that your scanner used to identify the
 Dependencies
 ===
 
+```
 json
-
 json-schema
-
 sqlite3
-
 csv
+```
+
+You can install the needed gems with Bundler:
+`gem install bundler`
+`bundle`
+
+You may need to use `sudo` to do `gem install bundler`.
 
 Running
 ===
@@ -29,7 +34,7 @@ operate on into the same directory as the script:
 
 `ruby -r "./plex_import.rb" -e "PlexImport.run"`
 
-To generate your own data from your database, you can use sqlite's csv
+To generate your own data from an existing database (say, to move to another library), you can use sqlite's csv
 flag:
 
 `sqlite3 -header -csv com.plexapp.plugins.library.db "select guid, title, title_sort from metadata_items where metadata_type = 2;" > out.csv`
